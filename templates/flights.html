@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Available Flights</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Flight ID</th>
+                    <th>Destination</th>
+                    <th>Departure</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample flight data -->
+                <tr>
+                    <td>1</td>
+                    <td>New York</td>
+                    <td>2025-12-25 10:00</td>
+                    <td>$500</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Los Angeles</td>
+                    <td>2025-12-26 15:00</td>
+                    <td>$350</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
