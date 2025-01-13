@@ -1,3 +1,4 @@
+
 /* Reset some default styles for the page */
 * {
     margin: 0;
@@ -8,18 +9,37 @@
 /* Body and container styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #fcf3cf ;
     padding: 20px;
+
     text-align: center;
+    font-family: var(--text-family-default);
+    font-size: var(--text-size-m);
+    line-height: var(--line-height-m);
+
 }
 
+.card {
+    margin: var(--spacing-xxxl) auto var(--spacing-xxl);
+    padding: var(--spacing-xxl);
+  }
+
+
+*{
+    box-sizing: inherit;
+}
+
+
 .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  justify-content: space-between;
+  margin: 0;
+  padding: var(--spacing-l);
+  position: relative;
+  width: 100%;
 }
 
 /* Headings and basic text */
@@ -61,7 +81,7 @@ input[type="text"], input[type="number"], input[type="email"], input[type="passw
 
 /* Button styling */
 button, .btn {
-    background-color: #007bff;
+    background-color:  #fa5639;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -85,20 +105,4 @@ form div {
 .container {
     max-width: 500px;
     margin: 30px auto;
-}
-
-/* Small device adjustments */
-@media (max-width: 600px) {
-    .container {
-        padding: 15px;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-
-    button, .btn {
-        width: 100%;
-        font-size: 18px;
-    }
 }
