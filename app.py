@@ -1,7 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from flask_migrate import Migrate
 from config import Config
-from models import db
+from models import db, Flight, Reservation, seed
 from controllers import FlightController, BookingController
 from forms import FlightForm, BookingForm
 import secrets
@@ -10,10 +10,14 @@ app = Flask(__name__)
 app.config.from_object(Config)
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 
-
 # Initialize SQLAlchemy and Flask-Migrate
 db.init_app(app)
 migrate = Migrate(app, db)
+
+with app.app_context():
+    # Create database tables and seed data if necessary
+    db.create_all()
+    seed()
 
 @app.route('/')
 def home():
@@ -43,4 +47,3 @@ def book_flight():
 
 if __name__ == '__main__':
     app.run(debug=True)
-

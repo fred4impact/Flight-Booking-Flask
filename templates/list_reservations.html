@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reservations</title>
+</head>
+<body>
+    <h1>Reservations for {{ flight.flight_number }}: {{ flight.departure }} to {{ flight.destination }}</h1>
+    <ul>
+        {% for reservation in reservations %}
+            <li>{{ reservation.passenger_name }} ({{ reservation.passenger_email }})</li>
+        {% endfor %}
+    </ul>
+    <a href="/flights">Back to Flights</a>
+</body>
+</html>

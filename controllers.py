@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, flash
-from models import db, Flight, Booking
+from models import db, Flight, Reservation
 from forms import FlightForm, BookingForm
 
 class FlightController:
@@ -12,8 +12,10 @@ class FlightController:
     def add_flight(form):
         if form.validate_on_submit():
             flight = Flight(
-                destination=form.destination.data,
+                flight_number=form.flight_number.data,
                 departure=form.departure.data,
+                destination=form.destination.data,
+                departure_time=form.departure_time.data,
                 price=form.price.data
             )
             db.session.add(flight)
@@ -26,11 +28,12 @@ class BookingController:
     @staticmethod
     def book_flight(form):
         if form.validate_on_submit():
-            booking = Booking(
+            reservation = Reservation(
+                flight_id=form.flight_id.data,
                 passenger_name=form.passenger_name.data,
-                flight_id=form.flight_id.data
+                passenger_email=form.passenger_email.data
             )
-            db.session.add(booking)
+            db.session.add(reservation)
             db.session.commit()
             flash('Flight booked successfully!', 'success')
             return redirect(url_for('list_flights'))
