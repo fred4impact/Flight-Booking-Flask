@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flight-booking
+  labels:
+    app: flight-booking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flight-booking
+  template:
+    metadata:
+      labels:
+        app: flight-booking
+    spec:
+      containers:
+      - name: flight-booking
+        image: runtesting/flight-booking:v0.1.0
+        ports:
+        - containerPort: 5000

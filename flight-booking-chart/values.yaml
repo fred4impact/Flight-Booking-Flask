@@ -1,0 +1,45 @@
+# Default values for flight-booking-chart.
+name: flight-booking-chart
+# This is the name of the application
+appName: flight-booking
+replicaCount: 1
+image:
+  repository: runtesting/flight-booking
+  pullPolicy: IfNotPresent
+  tag: "v0.1.0"
+
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 5000
+
+serviceAccount:
+  create: true
+  name: ""
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: flight-booking.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+  
