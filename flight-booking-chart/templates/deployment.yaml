@@ -1,28 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "flight-booking-chart.fullname" . }}
-  labels:
-    app: {{ include "flight-booking-chart.name" . }}
-    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+  name: { { .Chart.Name } }
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: { { .Values.replicaCount } }
   selector:
     matchLabels:
-      app: {{ include "flight-booking-chart.name" . }}
+      app: { { .Chart.Name } }
   template:
     metadata:
       labels:
-        app: {{ include "flight-booking-chart.name" . }}
+        app: { { .Chart.Name } }
     spec:
-      serviceAccountName: {{ include "flight-booking-chart.serviceAccountName" . }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: { { .Chart.Name } }
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 5000
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            - containerPort: { { .Values.service.port } }

@@ -1,18 +1,13 @@
-# Default values for flight-booking-chart.
-name: flight-booking-chart
-# This is the name of the application
-appName: flight-booking
-replicaCount: 1
 image:
   repository: runtesting/flight-booking
+  tag: v0.1.0
   pullPolicy: IfNotPresent
-  tag: "v0.1.0"
-
 
 service:
-  type: NodePort
-  port: 80
-  targetPort: 5000
+  type: ClusterIP
+  port: 5000
+
+replicaCount: 1
 
 serviceAccount:
   create: true
